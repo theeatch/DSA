@@ -10,12 +10,12 @@ d={
 class Solution(object):
     def maxArea(self, height: list[int]) -> int:
         max_area=0
+        k = len(height)-1
+        j=0
         for i in range(len(height)):
-            k = len(height)-1
-            max_area = max(max_area, min(height[i], height[k])*(k-i))
-            if height[i] < height[k]:
+            max_area = max(max_area, abs(min(height[j], height[k])*(k-j)))
+            if height[j] > height[k]:
                 k -= 1
             else:
-                i += 1
-
+                j += 1
         return max_area
