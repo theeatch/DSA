@@ -10,31 +10,33 @@ data = {
 class MinStack:
 
     def __init__(self):
-        self.stack = []
-        self.min_stack = []
+        self.stack=[]
+        self.min_stack=[]
 
     def push(self, val: int) -> None:
         self.stack.append(val)
-        # If min_stack is empty or the current value is smaller than the top of min_stack, push it to min_stack
+
         if not self.min_stack or val <= self.min_stack[-1]:
-            self.min_stack.append(val)
+            self.min_stack.append(val) 
 
     def pop(self) -> None:
         if self.stack:
-            val = self.stack.pop()
-            # If the value popped is the same as the top of min_stack, pop it from min_stack too
-            if val == self.min_stack[-1]:
+            element = self.stack.pop()
+
+            if element == self.min_stack[-1]:
                 self.min_stack.pop()
+        else:
+            return "stack is empty"
 
     def top(self) -> int:
         if self.stack:
             return self.stack[-1]
+        else:
+            return "stack is empty"
 
     def getMin(self) -> int:
         if self.min_stack:
             return self.min_stack[-1]
+        else:
+            return "empty stack"
 
-# Ensure the number of input operations and expected outputs match
-assert len(data["i"][0]) == len(data["o"]), "Input and output data lengths do not match"
-
-# The test decorator will handle running the tests based on the provided data

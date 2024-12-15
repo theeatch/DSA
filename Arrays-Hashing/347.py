@@ -14,7 +14,5 @@ class Solution(object):
         for i in nums:
             # enter num and its occurence in dictionary
             d[i]+=1
-            # zip the dictionary into tuple, lambda functions describes sort according to value , in descending order
-        res = sorted(zip(d.keys(),d.values()), key=lambda x: x[1], reverse=True)
-        # return the first k elements (x[0] is the key of dictionary)
-        return list(map(lambda x: x[0], res[:k]))
+            # sort the dictionary by value and return the keys
+        return sorted(d, key=d.get, reverse = True)[:k]
